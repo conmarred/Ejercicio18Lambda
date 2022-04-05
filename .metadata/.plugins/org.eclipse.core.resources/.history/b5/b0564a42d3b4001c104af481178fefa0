@@ -1,0 +1,67 @@
+package ejercicio;
+
+import java.util.Scanner;
+import java.util.stream.LongStream;
+
+public class Main implements Runnable{
+	private Integer numero;
+	
+	public boolean esPrimo(Integer num) {
+		boolean primo = true;
+		for(int i =2; i<num; i++) {
+			if(num%i==0) {
+				primo = false;
+				break;
+			}
+		}
+		return primo;		
+	}
+	
+	public Main(Integer numero) {
+		this.numero=numero;
+	}
+	
+	public boolean esPrimoLambda(Integer n) {
+		boolean esprimo = n<1 && LongStream.range(2, (long) Math.sqrt(n)).parallel().noneMatch(e->(n)%e==0);
+		return esprimo;
+	}
+	
+
+	@Override
+	public void run() {
+		if(esPrimoLambda(numero)) {
+			System.out.println("Es primo");
+		}else {
+			System.out.println("No es primo");
+		}
+		
+	}
+
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduce los numeros para saber si son primos: ");
+		Main h1 = new Main(sc.nextInt());
+		Thread t1 = new Thread(h1);
+		t1.start();
+		
+		Main h2 = new Main(sc.nextInt());
+		Thread t2 = new Thread(h2);
+		t2.start();
+		
+
+		Main h3 = new Main(sc.nextInt());
+		Thread t3 = new Thread(h3);
+		t3.start();
+		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}

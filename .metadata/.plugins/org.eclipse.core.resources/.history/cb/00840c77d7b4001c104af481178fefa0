@@ -1,0 +1,90 @@
+package ejercicio;
+
+import java.util.Scanner;
+import java.util.stream.LongStream;
+
+
+interface primo{
+	public Runnable operacion(Integer i);
+}
+
+
+public class Main {
+//	private Integer numero;
+//	
+//	public boolean esPrimo(Integer num) {
+//		boolean primo = true;
+//		for(int i =2; i<num; i++) {
+//			if(num%i==0) {
+//				primo = false;
+//				break;
+//			}
+//		}
+//		return primo;		
+//	}
+//	
+//	public Main(Integer numero) {
+//		this.numero=numero;
+//	}
+//	
+//	
+//	public boolean esPrimoLambda(Integer n) {
+//		boolean esprimo = n>1 && LongStream.range(2, (long) Math.sqrt(n)).parallel().noneMatch(e->(n)%e==0);
+//		return esprimo;
+//	}
+//	
+	
+	
+
+//	@Override
+//	public void run() {
+//		if(esPrimo(numero)) {
+//			System.out.println("Es primo");
+//		}else {
+//			System.out.println("No es primo");
+//		}
+//		
+//	}
+
+
+	public static void main(String[] args) {
+		
+		primo p = num -> {
+			boolean primo = true;
+			for(int i =2; i<num; i++) {
+				if(num%i==0) {
+					primo = false;
+					break;
+				}
+			}if(primo) {
+				System.out.println("Es primo");
+			}else {
+				System.out.println("No es primo");
+			}
+			return null;
+		};
+		
+		Scanner sc = new Scanner(System.in);
+		int numero1;
+		System.out.println("Introduce un número para saber si es primo: ");
+		numero1 =sc.nextInt();
+		Thread t1 = new Thread(p.operacion(numero1));
+		t1.start();
+		
+		
+		int numero2;
+		System.out.println("Introduce un número para saber si es primo: ");
+		numero2 =sc.nextInt();
+		Thread t2 = new Thread(p.operacion(numero2));
+		t2.start();
+		
+		int numero3;
+		System.out.println("Introduce un número para saber si es primo: ");
+		numero3 =sc.nextInt();
+		Thread t3 = new Thread(p.operacion(numero3));
+		t3.start();
+		
+
+	}
+
+}

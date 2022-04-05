@@ -1,0 +1,59 @@
+package ejercicio;
+
+import java.util.Scanner;
+
+//Defino interfaz funcionable
+interface Operaciones{
+	
+	public Integer operacion(Integer i, Integer j);
+}
+
+
+public class Ejercicio19 {
+
+	
+	public static void main(String[] args) {
+		Operaciones opSuma = new Operaciones() {
+			
+			@Override
+			public Integer operacion(Integer i, Integer j) {
+				return i+j;
+			}
+		};
+		
+		Operaciones opResta = new Operaciones() {
+			
+			@Override
+			public Integer operacion(Integer i, Integer j) {
+				return i-j;
+			}
+		};
+		
+		Operaciones opMultiplicar = new Operaciones() {
+			
+			@Override
+			public Integer operacion(Integer i, Integer j) {
+				return i*j;
+			}
+		};
+		
+		Operaciones opDividir = new Operaciones() {
+			
+			@Override
+			public Integer operacion(Integer i, Integer j) {
+				return i/j;
+			}
+		};
+		
+		System.out.println("Probando las operaciones con los parámetros: ");
+		System.out.println("Introduce el primero numero");
+		Scanner sc = new Scanner(System.in);
+		int numero1, numero2;
+		numero1 = sc.nextInt();
+		System.out.println("Introduce el segundo numero");
+		numero2 = sc.nextInt();
+		System.out.println("Las operaciones se realizarán con los números: " + numero1 + " y " + numero2);
+
+	}
+
+}

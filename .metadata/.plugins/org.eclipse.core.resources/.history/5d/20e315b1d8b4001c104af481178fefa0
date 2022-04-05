@@ -1,0 +1,21 @@
+package ejercicio;
+
+//Defino interfaz funcionable
+interface Operaciones{
+	
+	public Integer operacion(Integer i, Integer j);
+}
+
+
+public class Ejercicio19 {
+
+	
+
+
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
